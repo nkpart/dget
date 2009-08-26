@@ -1,5 +1,6 @@
 require 'optparse'
 require 'gh-wiki'
+require 'fileutils'
 
 module GhWiki
   class CLI
@@ -40,7 +41,9 @@ module GhWiki
         project = Project.new(user,project_name)
         puts "#{user} / #{project.name}"
         puts "Description:	#{project.description}"
-        puts "Pages: #{project.pages.map{ |x| x.inspect }.join(", ")}"
+        puts "Pages: #{project.pages.map{ |x| x.title.inspect }.join(", ")}"
+        
+        project.save_pages_into path
       end
 
     end

@@ -11,6 +11,22 @@ module GhWiki
     Nokogiri::HTML(open(url))
   end
   
+  class Page
+    include GhWiki
+    
+    attr_reader :title
+    
+    def initialize title, link
+      @title = title
+      @link = link
+    end
+    
+    def doc
+      N link
+    end
+  end
+      
+  
   class Project
     include GhWiki
     
@@ -33,7 +49,16 @@ module GhWiki
     
     def pages
       home_doc.css(".sidebar ul li b a").map do |item|
-        item.content
+        Page.new(item.content, item['href'])
+      end
+    end
+    
+    
+    def save_pages_into path
+      FileUtils::mkdir_p path
+      projects.pages.each do |page|
+        
+        # get page, clean it, replace sidebar, check for links, save it out
       end
     end
   end

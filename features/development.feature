@@ -13,7 +13,7 @@ Feature: github wiki cloning
   
   Scenario: Clone Wiki
     Given this project is active project folder
-    When I run project executable "bin/gh-wiki" with arguments "dpp liftweb"
+    When I run project executable "bin/gh-wiki" with arguments "dpp liftweb -p tmp/lw"
     Then I should see 
       """
       dpp / liftweb
