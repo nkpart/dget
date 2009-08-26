@@ -1,0 +1,16 @@
+History.txt
+Manifest.txt
+PostInstall.txt
+README.rdoc
+Rakefile
+features/development.feature
+features/step_definitions/common_steps.rb
+features/support/common.rb
+features/support/env.rb
+features/support/matchers.rb
+lib/gh-wiki.rb
+script/console
+script/destroy
+script/generate
+test/test_gh-wiki.rb
+test/test_helper.rb
