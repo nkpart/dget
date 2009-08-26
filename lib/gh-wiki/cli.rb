@@ -1,4 +1,5 @@
 require 'optparse'
+require 'gh-wiki'
 
 module GhWiki
   class CLI
@@ -30,13 +31,16 @@ module GhWiki
       end
 
       user = ARGV[0]
-      project = ARGV[1]
-      if !user || !project then
+      project_name = ARGV[1]
+      if !user || !project_name then
         puts banner
       else 
         path = options[:path]
         
-        # do it!
+        project = Project.new(user,project_name)
+        puts "#{user} / #{project.name}"
+        puts "Description:	#{project.description}"
+        puts "Pages: #{project.pages.map{ |x| x.inspect }.join(", ")}"
       end
 
     end

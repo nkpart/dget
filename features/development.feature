@@ -16,9 +16,14 @@ Feature: github wiki cloning
     When I run project executable "bin/gh-wiki" with arguments "dpp liftweb"
     Then I should see 
       """
-        dpp / liftweb
-        Description:	The Lift web framework for Scala
+      dpp / liftweb
+      Description:	The Lift web framework for Scala
       """
+    And I should see
+      """
+      Pages: "About: Lift Tags"
+      """
+  
   Scenario: Help
     Given this project is active project folder
     When I run project executable "bin/gh-wiki" with arguments "--help"
