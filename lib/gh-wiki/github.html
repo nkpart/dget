@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Local GH Wiki - <%= project_name %></title>  
+    <link href="bundle.css" media="screen" rel="stylesheet" type="text/css" />
+    <style type="text/css" media="screen">
+      ul.jq-ui-autocomplete{position:absolute;overflow:hidden;background-color:#fff;border:1px solid #aaa;margin:0;padding:0;list-style:none;font:normal .75em/.75em Verdana,Arial,sans-serif;color:#333;}
+      ul.jq-ui-autocomplete li{display:block;padding:.3em .5em .3em .3em;overflow:hidden;width:100%;}
+      ul.jq-ui-autocomplete li.active{background-color:#3875d7;color:#fff;}
+      
+      div.dp-popup{position:relative;background:#ccc;font-size:10px;font-family:arial,sans-serif;padding:2px;width:171px;line-height:1.2em;}
+      div#dp-popup{position:absolute;z-index:199;}
+      div.dp-popup h2{font-size:12px;text-align:center;margin:2px 0;padding:0;}
+      a#dp-close{font-size:11px;padding:4px 0;text-align:center;display:block;}
+      a#dp-close:hover{text-decoration:underline;}
+      div.dp-popup a{color:#000;text-decoration:none;padding:3px 2px 0;}
+      div.dp-popup div.dp-nav-prev{position:absolute;top:2px;left:4px;width:100px;}
+      div.dp-popup div.dp-nav-prev a{float:left;}
+      div.dp-popup div.dp-nav-prev a,div.dp-popup div.dp-nav-next a{cursor:pointer;}
+      div.dp-popup div.dp-nav-prev a.disabled,div.dp-popup div.dp-nav-next a.disabled{cursor:default;}
+      div.dp-popup div.dp-nav-next{position:absolute;top:2px;right:4px;width:100px;}
+      div.dp-popup div.dp-nav-next a{float:right;}
+      div.dp-popup a.disabled{cursor:default;color:#aaa;}
+      div.dp-popup td{cursor:pointer;}
+      div.dp-popup td.disabled{cursor:default;}
+      .syntax{background:#fff;}
+      .syntax .c{color:#998;font-style:italic;}
+      .syntax .err{color:#a61717;background-color:#e3d2d2;}
+      .syntax .k{font-weight:bold;}
+      .syntax .o{font-weight:bold;}
+      .syntax .cm{color:#998;font-style:italic;}
+      .syntax .cp{color:#999;font-weight:bold;}
+      .syntax .c1{color:#998;font-style:italic;}
+      .syntax .cs{color:#999;font-weight:bold;font-style:italic;}
+      .syntax .gd{color:#000;background-color:#fdd;}
+      .syntax .gd .x{color:#000;background-color:#faa;}
+      .syntax .ge{font-style:italic;}
+      .syntax .gr{color:#a00;}
+      .syntax .gh{color:#999;}
+      .syntax .gi{color:#000;background-color:#dfd;}
+      .syntax .gi .x{color:#000;background-color:#afa;}
+      .syntax .go{color:#888;}
+      .syntax .gp{color:#555;}
+      .syntax .gs{font-weight:bold;}
+      .syntax .gu{color:#aaa;}
+      .syntax .gt{color:#a00;}
+      .syntax .kc{font-weight:bold;}
+      .syntax .kd{font-weight:bold;}
+      .syntax .kp{font-weight:bold;}
+      .syntax .kr{font-weight:bold;}
+      .syntax .kt{color:#458;font-weight:bold;}
+      .syntax .m{color:#099;}
+      .syntax .s{color:#d14;}
+      .syntax .na{color:#008080;}
+      .syntax .nb{color:#0086B3;}
+      .syntax .nc{color:#458;font-weight:bold;}
+      .syntax .no{color:#008080;}
+      .syntax .ni{color:#800080;}
+      .syntax .ne{color:#900;font-weight:bold;}
+      .syntax .nf{color:#900;font-weight:bold;}
+      .syntax .nn{color:#555;}
+      .syntax .nt{color:#000080;}
+      .syntax .nv{color:#008080;}
+      .syntax .ow{font-weight:bold;}
+      .syntax .w{color:#bbb;}
+      .syntax .mf{color:#099;}
+      .syntax .mh{color:#099;}
+      .syntax .mi{color:#099;}
+      .syntax .mo{color:#099;}
+      .syntax .sb{color:#d14;}
+      .syntax .sc{color:#d14;}
+      .syntax .sd{color:#d14;}
+      .syntax .s2{color:#d14;}
+      .syntax .se{color:#d14;}
+      .syntax .sh{color:#d14;}
+      .syntax .si{color:#d14;}
+      .syntax .sx{color:#d14;}
+      .syntax .sr{color:#009926;}
+      .syntax .s1{color:#d14;}
+      .syntax .ss{color:#990073;}
+      .syntax .bp{color:#999;}
+      .syntax .vc{color:#008080;}
+      .syntax .vg{color:#008080;}
+      .syntax .vi{color:#008080;}
+      .syntax .il{color:#099;}
+      *{margin:0;padding:0;}
+      html,body{height:100%;}
+      body{background-color:white;font:13.34px helvetica,arial,freesans,clean,sans-serif;*font-size:small;text-align:center;}
+      table{font-size:inherit;font:100%;}
+      select,input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+      select,option{padding:0 .25em;}
+      input.text{padding:1px 0;}
+      optgroup{margin-top:.5em;}
+      pre,code{font:115% Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;*font-size:100%;}
+      body *{line-height:1.4em;}
+      img{border:0;}
+      a{color:#4183c4;text-decoration:none;}
+      a.action{color:#d00;text-decoration:underline;}
+      a.action span{text-decoration:none;}
+      a:hover{text-decoration:underline;}
+      .clear{clear:both;}
+      .sparkline{display:none;}
+      .right{float:right;}
+      .left{float:left;}
+      .hidden{display:none;}
+      img.help{vertical-align:middle;}
+      .notification{background:#FFFBE2 none repeat scroll 0;border:1px solid #FFE222;padding:1em;margin:1em 0;font-weight:bold;}
+      .warning{background:#fffccc;font-weight:bold;padding:.5em;margin-bottom:.8em;}
+      .error_box{background:#FFEBE8 none repeat scroll 0;border:1px solid #DD3C10;padding:1em;font-weight:bold;}
+      abbr{border-bottom:none;}
+      .flash{color:green;}
+      .corner{-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px;padding:3px;}
+      body{text-align:center;}
+      .site{width:69em;margin:0 auto;padding:0 3em;text-align:left;}
+      .syntax .gc{color:#999;background-color:#EAF2F5;}
+      #site_alert{margin-bottom:1em;}
+      #site_alert p{margin:0 auto;width:85%;text-align:center;font-weight:bold;color:#fff;background:#000;padding-top:.3em;}
+/*      #header{background:#fcfcfc url(/images/modules/header/header_bg.png) 0 100% repeat-x;height:6.82em;min-width:75em;}*/
+      #header a{color:#fff;}
+      #header a:hover{text-decoration:none;}
+      #header .logo{padding-top:1.2em;float:left;}
+      #header .actions{float:right;color:#444;font-size:110%;margin-top:2.3em;}
+      #header .actions a{color:#444;margin-left:1.5em;padding:.4em;}
+      #header .actions a:hover{text-decoration:none;background-color:#dcdcdc;}
+      #header.basic{border-bottom:5px solid #ddd;margin-bottom:1em;}
+      #header .userbox{background:#EAF2F5;border:1px solid #ddd;float:right;margin-top:1.6em;width:25em;color:#aac;}
+      #header .userbox .box{margin:.25em .5em;}
+      #header .userbox .gravatar{float:left;}
+      #header .userbox .gravatar img{border:1px solid #d0d0d0;padding:2px;background-color:white;margin-right:.7em;}
+      #header .userbox .top{overflow:hidden;}
+      #header .userbox .top .name{float:left;overflow:hidden;font-weight:bold;width:10em;}
+      #header .userbox .top .name a{color:#000;}
+      #header .userbox .top .links{font-size:85%;margin-top:.2em;float:right;text-align:right;}
+      #header .userbox .top .links a{color:#4183c4;}
+      #header .userbox .top .links a:hover{text-decoration:underline;}
+      #header .userbox .bottom{overflow:hidden;}
+      #header .userbox .inbox{float:left;margin-top:.7em;background:url('/images/modules/inbox/message.png') 0 .1em no-repeat;}
+      #header .userbox .inbox a{padding-left:20px;display:block;}
+      #header .userbox a{color:#4183c4;}
+      #header .userbox .bottom .select{float:right;margin-top:.5em;}
+      #header .topsearch{float:left;width:19em;margin:2.05em 0 0 1em;color:#bbb;}
+      #header .topsearch a{color:#666;font-size:80%;}
+      #header .topsearch a:hover{color:black;text-decoration:underline;}
+      #header .topsearch form{padding-top:.4em;}
+      #header .topsearch input{vertical-align:middle;}
+      body:first-of-type#header .topsearch input{font-size:110%;}
+      #header .topsearch input.search{padding-top:1px;width:12em;}
+      body:first-of-type #header .topsearch input.search{padding-top:0;font-size:120%;width:9em;}
+      #header .topsearch input[type=submit]{position:relative;top:1px;}
+      body:first-of-type #header .topsearch input[type=submit]{top:0;}
+      #header .topsearch .links span{float:right;}
+      #main{min-height:100%;height:auto!important;height:100%;margin:0 auto -8.6em;}
+      .push{height:8.6em;padding-bottom:4em;}
+      #footer{height:8.6em;background:#bbccd9 url(/images/modules/footer/bg.png) 0 0 repeat-x;overflow:hidden;color:#cadcea;min-width:75em;}
+      #footer a{color:white;text-decoration:underline;}
+      #footer .info{padding:2.9em 0 3.3em 0;float:left;}
+      #footer .info .links{padding-bottom:.4em;border-bottom:3px solid #5c8ab3;}
+      #footer .info .company{padding-top:.4em;}
+      #footer .sponsor{padding:2.75em 0 1em 0;float:right;width:20em;}
+      #footer .sponsor img{float:right;margin:.4em 0 0 .75em;}
+      #footer .sponsor a{text-decoration:none;}
+      #footer .sponsor div{text-align:right;font-size:.9em;margin-top:.7em;}
+      #int-info img{position:relative;top:-.1em;}
+      #path{font-size:140%;padding:.8em 0;}
+      #toc{padding:1.5em 0;font-family:Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;font-size:90%;}
+      #toc ul{border-top:1px solid #eee;}
+      #toc ul li{list-style-type:none;padding:.4em 0 .4em 20px;border-bottom:1px solid #eee;}
+      #toc ul li.added{background:white url(/images/modules/toc/added.png) 0 50% no-repeat;}
+      #toc ul li.removed{background:white url(/images/modules/toc/removed.png) 0 50% no-repeat;}
+      #toc ul li.modified{background:white url(/images/modules/toc/modified.png) 0 50% no-repeat;}
+      #repos{margin-bottom:1em;}
+      #repos h1{font-size:160%;}
+      #repos h1 a{font-size:70%;font-weight:normal;}
+      #repos .hint{font-style:italic;color:#888;margin:.3em 0;}
+      #repos .repo{margin:1em 0;padding:.1em .5em .1em .5em;}
+      #repos .public{border:1px solid #d8d8d8;background-color:#f0f0f0;}
+      #repos .private{border:1px solid #f7ca75;background-color:#fffeeb;}
+      #repos .repo .title{overflow:hidden;}
+      #repos .repo .title .path{float:left;font-size:140%;}
+      #repos .repo .title .path img{vertical-align:middle;}
+      #repos .repo .title .path .button{margin-left:.25em;vertical-align:-12%;}
+      #repos .repo .title .path span a{font-size:75%;font-weight:normal;}
+      #repos .repo .title .security{float:right;text-align:right;font-weight:bold;padding-top:.5em;}
+      #repos .repo .title .security *{vertical-align:middle;}
+      #repos .repo .title .security img{position:relative;top:-1px;}
+      #repos .repo .title .flexipill{float:right;padding-top:.3em;margin-right:.5em;}
+      #repos .repo .title .flexipill a{color:black;}
+      #repos .repo .title .flexipill .middle{background:url(/images/modules/repos/pills/middle.png) 0 0 repeat-x;padding:0 0 0 .3em;}
+      #repos .repo .title .flexipill .middle span{position:relative;top:.1em;font-size:95%;}
+      #repos .repo .meta{margin:.2em 0 0 0;overflow:hidden;}
+      #repos .repo .meta table{float:left;max-width:48em;}
+      #repos .repo .meta table td *{vertical-align:middle;}
+      #repos .repo .meta table td.label{color:#888;padding-right:.25em;vertical-align:bottom;}
+      #repos .repo .meta table td span.editarea input{margin-top:.5em;margin-right:.5em;}
+      #repos .repo .meta table td textarea{display:block;clear:right;}
+      #repos .repo .meta table td.url{color:#4183c4;}
+      #repos .repo .meta table td.blank{color:#bbb;}
+      #repos .repo .pledgie{float:right;}
+      #repos .repo .commit{border:1px solid #bedce7;margin-top:.5em;padding:0 .5em .5em .5em;background:#eaf2f5 url(/images/modules/commit/bg_gradient.gif) 0 100% repeat-x;overflow:hidden;}
+      #repos .repo .commit .actor{float:left;margin-top:.5em;}
+      #repos .repo .commit .actor .gravatar{border:1px solid #d0d0d0;padding:2px;background-color:white;float:left;margin-right:.7em;}
+      #repos .repo .commit .actor .name{line-height:1.5em;}
+      #repos .repo .commit .actor .name span{color:#888;font-size:90%;}
+      #repos .repo .commit .actor .date{color:#888;font-size:90%;line-height:1em;}
+      #repos .repo .commit .message{float:left;padding:.5em 0 .5em .5em;margin-left:2em;border-left:1px solid #bedce7;}
+      #repos .repo .commit .machine{float:right;width:30em;padding:.5em 0 .5em .5em;border-left:1px solid #bedce7;color:#808080;font-family:Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;font-size:85%;line-height:1.5em;}
+      #repos .repo .diffs{margin-top:.5em;}
+      #repos .repo .diffs .diff *{vertical-align:middle;}
+      #repos .repo .diffs .diff img{position:relative;top:-1px;}
+      #guides h1{margin-bottom:.5em;}
+      #guides .index ul{list-style-type:none;font-size:120%;}
+      #guides .index ul li{padding-left:1.5em;background:white url(/images/modules/guides/book.png) no-repeat;}
+      #guides .index .new{margin-top:1em;border-top:1px solid #ccc;padding-top:.5em;}
+      #guides .index .new ul li{background:white url(/images/modules/guides/book_add.png) no-repeat;}
+      #guides .index .new ul li a{color:#c00;}
+      #guides .write .delete_page{float:right;}
+      #guides .guide{overflow:hidden;}
+      #guides .guide .main{float:left;width:50em;}
+      #guides .guide .sidebar{float:right;width:15em;border-left:4px solid #e6e6e6;margin:2.1em 0 0 0;padding-left:1em;}
+      #guides .guide .sidebar h3{margin:0 0 .5em 0;}
+      #guides .guide .sidebar ul{list-style-type:none;margin:0;color:#888;}
+      #guides .guide .sidebar ul li{padding-left:12px;background:white url(/images/modules/guides/sidebar/bullet_blue.png) -4px 0 no-repeat;margin:.2em 0;}
+      #guides .admin{clear:both;margin-top:3em;border-top:4px solid #e6e6e6;padding-top:.3em;overflow:hidden;}
+      #guides .write label{font-size:110%;color:#666;display:block;margin:1em 0;}
+      #guides .write input.text,#guides .write textarea{padding:5px;border:1px solid #888;}
+      #guides .write input.text{width:40em;}
+      #guides .write textarea{width:100%;height:25em;}
+      #guides .write label span.title{color:black;font-weight:bold;}
+      #guides .write .actions input{margin-right:1em;}
+      .wikistyle h1,h2,h3,h4,h5,h6{border:0!important;}
+      .wikistyle h1{font-size:170%!important;border-top:4px solid #aaa!important;padding-top:.5em!important;margin-top:1.5em!important;}
+      .wikistyle h1:first-child{margin-top:0!important;padding-top:.25em!important;border-top:none!important;}
+      .wikistyle h2{font-size:150%!important;margin-top:1.5em!important;border-top:4px solid #e0e0e0!important;padding-top:.5em!important;}
+      .wikistyle h3{margin-top:1em!important;}
+      .wikistyle p{margin:1em 0!important;line-height:1.5em!important;}
+      .wikistyle ul{margin:1em 0 1em 1.3em!important;}
+      .wikistyle ul{margin-top:0!important;margin-bottom:0!important;}
+      .wikistyle ol{margin:1em 0 1em 1.5em!important;}
+      .wikistyle ol ol{margin-top:0!important;margin-bottom:0!important;}
+      .wikistyle blockquote{margin:1em 0!important;border-left:5px solid #ddd!important;padding-left:.6em!important;color:#555!important;}
+      .wikistyle dt{font-weight:bold!important;margin-left:1em!important;}
+      .wikistyle dd{margin-left:2em!important;margin-bottom:1em!important;}
+      .wikistyle table{margin:1em 0!important;}
+      .wikistyle table th{border-bottom:1px solid #bbb!important;padding:.2em 1em!important;}
+      .wikistyle table td{border-bottom:1px solid #ddd!important;padding:.2em 1em!important;}
+      .wikistyle pre{margin:1em 0!important;font-size:90%!important;background-color:#f8f8ff!important;border:1px solid #dedede!important;padding:.5em!important;line-height:1.5em!important;color:#444!important;overflow:auto!important;}
+      .wikistyle pre code{padding:0!important;font-size:100%!important;background-color:#f8f8ff!important;border:none!important;}
+      .wikistyle code{font-size:90%!important;background-color:#f8f8ff!important;color:#444!important;padding:0 .2em!important;border:1px solid #dedede!important;}
+      .wikistyle pre.console{margin:1em 0!important;font-size:90%!important;background-color:black!important;padding:.5em!important;line-height:1.5em!important;color:white!important;}
+      .wikistyle pre.console code{padding:0!important;font-size:100%!important;background-color:black!important;border:none!important;color:white!important;}
+      .wikistyle pre.console span{color:#888!important;}
+      .wikistyle pre.console span.command{color:yellow!important;}
+      ul#archive{list-style-type:none;text-align:center;}
+      ul#archive li{display:inline;}
+      #other_archives{border-top:1px solid #ddd;padding-top:.5em;}
+      #other_archives ul{list-style-type:none;width:8em;float:left;clear:right;}
+      #archives .wait{padding:2em 0 3em 0;}
+      #archives .wait h2,#archives .wait p{text-align:center;}
+      .tool-tip{color:#fff;width:350px;z-index:13000;}
+      .tool-title{font-weight:bold;font-size:11px;margin:0;color:#9FD4FF;padding:8px 8px 4px;background:url(/images/modules/tooltip/bubble.png) top left;}
+      .tool-text{font-size:11px;padding:4px 8px 8px;background:url(/images/modules/tooltip/bubble.png) bottom right;}
+      .custom-tip{color:#000;width:130px;z-index:13000;}
+      .custom-title{font-weight:bold;font-size:11px;margin:0;color:#3E4F14;padding:8px 8px 4px;background:#C3DF7D;border-bottom:1px solid #B5CF74;}
+      .custom-text{font-size:11px;padding:4px 8px 8px;background:#CFDFA7;}
+      #services .test_hook{margin-top:.5em;}
+      #privacy_terms h1{margin-bottom:.3em;}
+      #privacy_terms h2{margin-top:1em;}
+      #privacy_terms ul,#privacy_terms ol{margin-left:1.4em;}
+      #privacy_terms p{margin-bottom:1em;}
+      #languages .popular{border-top:5px solid #f4f4f4;background-color:#fdfdfd;overflow:hidden;margin-top:2.4em;margin-bottom:1em;padding-top:1em;}
+      #languages .popular.compact{margin-top:0;}
+      #languages .popular h3{font-size:105%;color:#aaa;margin-bottom:.5em;}
+      #languages .popular .site .left img{border:1px solid #d0d0d0;padding:1px;background-color:white;margin-right:.1em;position:absolute;top:.25em;left:0;}
+      #languages .popular a{color:black;}
+      #languages .popular ul{list-style-type:none;}
+      #languages .popular ul li{line-height:1.6em!important;font-size:125%;color:#888;padding-left:1.6em;position:relative;}
+      #languages .popular ul li a.repo{font-weight:bold;}
+      #languages .popular .left{margin-left:14em;float:left;width:27em;}
+      #languages .popular.compact .left{margin-left:0;float:left;width:25em;padding-bottom:2em;}
+      #languages .popular.compact .left.row{clear:left;}
+      #languages .all_languages{padding-right:3em;text-align:right;}
+      #language_table{border:1px solid #eee;}
+      #language_table th{background:#f0f0f0;padding:.5em;}
+      #language_table td{padding:.5em;}
+      #language_table tr.dark{background:#fafafa;}
+      
+      
+      .actions { display: none; }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+      function go(id) {
+        var content = document.getElementById(id)
+        var mc = document.getElementById("main_content")
+        mc.innerHTML = content.innerHTML
+      }
+    </script>
+  </head>
+  
+  <body>
+    <div id="main">
+      <div id="header" class="">
+        <div class="site">
+          <div class="logo">
+            <!-- <a href="http://github.com"><img src="/images/modules/header/logov3.png" alt="github" /></a> -->
+          </div>            
+        </div>
+      </div>
+
+  <div class="site">
+
+<div id="repos">
+  <div class="repo public" id="repo_details">
+    <div class="title">
+      <div class="path">
+        <a href="#/home"><%= user %></a> / <b><a href="#/home"><%= project_name %></a></b>          
+      </div>
+
+      </div>
+
+    <div class="meta">
+      <table>
+        <tr>
+          <td class="label">Description:</td>
+          <td>
+            <span id="repository_description"><%= project_description %></span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div id="guides">
+  <div class="guide">
+    <!-- main content -->
+    
+    <div class="main" id="main_content">
+      <%= main_content %>
+    </div>
+    
+    <!-- sidebar -->
+    
+    <div class="sidebar">
+      <h3> 
+        Pages 
+      </h3>
+      <%= page_list %>
+      <hr/>
+      <ul><li><b><a href="javascript:go('all_pages')">All Pages</a></b></li><ul>
+    </div>
+
+  </div>
+  
+  <!-- admin -->
+  <div class="admin">
+  </div>
+</div>
+
+  </div>
+
+  <div class="push"></div>
+  </div>
+  <div id="footer">
+  </div>
+  
+  <div id="all_pages" style="display: none;">
+    <%= page_content %>
+  </div>
+    
+  </body>
+</html>
+
