@@ -30,11 +30,14 @@ module GhWiki
 
   def sidebar pages
     "<ul>" + 
-      pages.map { |title, id| "<li><b><a href=\"javascript:go(\'#{id}\')\""">#{title}</a></b></li>" }.join + 
+    pages.map { |title, id, _| 
+      "<li><b><a href=\"javascript:go(\'#{id}\')\""">#{title}</a></b></li>" 
+    }.join + 
     "</ul>"
   end
   
   def clean_links page_main_doc, project_name
+    # rewrites internal links to use the local navigation
     page_main_doc.css('a').each do |some_a|
       some_a['href'][/#{project_name}\/(.*)/, 1].fmap { |id|
         some_a['href'] = "javascript:go(\'#{id}\')"

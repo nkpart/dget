@@ -11,7 +11,6 @@ $hoe = Hoe.spec 'gh-wiki' do
   self.developer 'Nick Partridge', 'nkpart@gmail.com'
   self.rubyforge_name       = self.name # TODO this is default value
   self.extra_deps         = [['nokogiri','>= 0.0']] #TODO pick a version
-
 end
 
 require 'newgem/tasks'

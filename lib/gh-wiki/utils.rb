@@ -16,9 +16,9 @@ class String
 end
 
 class Symbol
-  # def to_proc
-  #   proc { |x| x.send(self) }
-  # end
+  def to_proc
+    proc { |x| x.send(self) }
+  end
 end
 
 class Object
