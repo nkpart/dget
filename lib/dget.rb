@@ -8,7 +8,7 @@ require "dget/googlecode"
 require "dget/github"
   
 module DGet
-  VERSION = '0.0.1' #unless defined? VERSION
+  VERSION = '0.0.1' unless defined? VERSION
   
   def self.cli(stdin, stdout, args)
     engine, project_spec, file = *args
