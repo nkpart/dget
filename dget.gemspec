@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dget}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nick Partridge"]
-  s.date = %q{2009-09-08}
+  s.date = %q{2009-09-09}
   s.default_executable = %q{dget}
   s.description = %q{get local copies of github project wikis}
   s.email = %q{nkpart@gmail.com}
