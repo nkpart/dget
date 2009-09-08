@@ -13,7 +13,6 @@ module DGet
   GH = GitHubEngine.new unless defined? GH
   GC = GoogleCodeEngine.new unless defined? GC
   
-  
   def self.parse_args args    
     if (args[0] =~ /github.com\/(.*)\/(.*)[\/]{0,1}/)
       return ["github", $1 + "/" + $2, args[1]]
@@ -38,7 +37,9 @@ module DGet
         GC.do(project_spec, file)
       end
     else 
-      stdout.puts "Usage: dget [github|googlecode] [user/project|project] [file]"
+      stdout.puts "Usage: "
+      stdout.puts "  dget [github|googlecode] [user/project|project] [file]"
+      stdout.puts "  dget http://github.com/user/project [file]"
     end
   end
 end

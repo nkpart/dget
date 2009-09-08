@@ -55,6 +55,8 @@ module DGet
       gh_doc = GitHubDoc.new(user, project_name)
       file ||= file_for(user, project_name)
       
+      puts "Building wiki: #{user}/#{project_name} => #{file}"
+      
       content = build_content gh_doc
       File.open(file, 'w') { |f| f.puts content }
     end
@@ -78,7 +80,10 @@ module DGet
       project_description = root.css("#repository_description").first.fmap(&:content)
       main_content = root.css('.main').first.fmap(&:inner_html)
       page_list = sidebar(pages)
-      page_content = pages.map { |title, id, content_f| 
+      i = 0 #todo better way to trace this?
+      page_content = pages.map { |title, id, content_f|
+        i += 1
+        puts "  * [#{i}/#{pages.count}] #{title}"
         "<div id=\"#{id}\">#{content_f[]}</div>"
       }.join
 
