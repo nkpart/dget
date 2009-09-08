@@ -1,6 +1,4 @@
-module GhWiki
-  module_function
-  
+module DGet
   def N url
     Nokogiri::HTML(open(url))
   rescue SocketError => e
@@ -21,7 +19,22 @@ class Symbol
   end
 end
 
+module Enumerable
+  def tail
+    self[1..-1]
+  end
+end
+
 class Object
+  def tap
+    yield self
+    self
+  end
+  
+  def trace
+    self.tap { |x| p x }
+  end
+  
   def fmap &blk
     if (self.respond_to? :map) then
       self.map(&blk)
@@ -42,4 +55,3 @@ class Object
     end
   end
 end
-

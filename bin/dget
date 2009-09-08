@@ -4,16 +4,6 @@
 #  Copyright (c) Nick Partridge 2009. All rights reserved.
 
 require 'rubygems'
-require File.expand_path(File.dirname(__FILE__) + "/../lib/gh-wiki")
+require File.expand_path(File.dirname(__FILE__) + "/../lib/dget")
 
-user, project_name, file = *ARGV
-if (user && project_name) then 
-  file ||= "#{project_name}_#{user}.html"
-  content = GhWiki.main(user, project_name)
-  File.open(file, 'w') { |f| f.puts content }
-else 
-  puts "Usage: gw user project [file=user_project.html]"
-end
-
-
-
+DGet.cli($stdin, $stdout, ARGV)

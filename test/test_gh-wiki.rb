@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper.rb'
 
-class TestGhWiki < Test::Unit::TestCase
+class TestDGet < Test::Unit::TestCase
 
   def setup
   end
