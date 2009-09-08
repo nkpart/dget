@@ -1,26 +1,16 @@
 = dget
 
-* http://github.com/#{github_username}/#{project_name}
+dget - a tool borne by my long commute. Create local copies of the wiki of a project on github, and read those docs when you're offline!
 
-== DESCRIPTION:
+The wiki is stored in a single html file.
 
-FIX (describe your package)
+== Todo
 
-== FEATURES/PROBLEMS:
+* Google code support
 
-* FIX (list of features or problems)
+== Install
 
-== SYNOPSIS:
-
-  FIX (code sample of usage)
-
-== REQUIREMENTS:
-
-* FIX (list of requirements)
-
-== INSTALL:
-
-* FIX (sudo gem install, anything else)
+  $ gem install nkpart-dget
 
 == LICENSE:
 
