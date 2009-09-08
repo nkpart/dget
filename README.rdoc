@@ -4,6 +4,11 @@ dget - a tool borne by my long commute. Create local copies of the wiki of a pro
 
 The wiki is stored in a single html file.
 
+Examples!
+
+  $ dget github dpp/liftweb
+  $ dget github tenderlove/nokogiri
+
 == Todo
 
 * Google code support
