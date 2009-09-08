@@ -10,14 +10,32 @@ require "dget/github"
 module DGet
   VERSION = '0.0.1' unless defined? VERSION
   
-  def self.cli(stdin, stdout, args)
+  GH = GitHubEngine.new unless defined? GH
+  GC = GoogleCodeEngine.new unless defined? GC
+  
+  
+  def self.parse_args args    
+    if (args[0] =~ /github.com\/(.*)\/(.*)[\/]{0,1}/)
+      return ["github", $1 + "/" + $2, args[1]]
+    end
+    
     engine, project_spec, file = *args
-    if (engine && project_spec) then 
+    if (engine && project_spec)
+      return [engine, project_spec, file]
+    end
+
+    return []
+  end
+  
+  def self.cli(stdin, stdout, args)
+    parsed = parse_args(args)
+    if !parsed.empty?
+      engine, project_spec, file = *parsed
       case engine
       when "github"
-        GitHubEngine.new.do(project_spec, file)
+        GH.do(project_spec, file)
       when "googlecode"
-        GoogleCodeEngine.new.do(project_spec, file)
+        GC.do(project_spec, file)
       end
     else 
       stdout.puts "Usage: dget [github|googlecode] [user/project|project] [file]"
