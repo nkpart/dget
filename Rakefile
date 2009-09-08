@@ -1,20 +1,48 @@
 require 'rubygems'
-gem 'hoe', '>= 2.1.0'
-require 'hoe'
-require 'fileutils'
-require './lib/dget'
+require 'rake'
 
-Hoe.plugin :newgem
-Hoe.plugin :cucumberfeatures
-
-puts DGet::VERSION
-$hoe = Hoe.spec 'dget' do
-  self.developer 'Nick Partridge', 'nkpart@gmail.com'
-  self.rubyforge_name       = self.name # TODO this is default value
-  self.extra_deps         = [['nokogiri','>= 0.0']] #TODO pick a version
-  self.version = DGet::VERSION
-  
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "dget"
+    gem.summary = %Q{get local copies of github project wikis}
+    gem.description = gem.summary
+    gem.email = "nkpart@gmail.com"
+    gem.homepage = "http://github.com/nkpart/dget"
+    gem.authors = ["Nick Partridge"]
+    gem.add_development_dependency "rspec"
+    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+  end
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
 
-require 'newgem/tasks'
-Dir['tasks/**/*.rake'].each { |t| load t }
+require 'spec/rake/spectask'
+Spec::Rake::SpecTask.new(:spec) do |spec|
+  spec.libs << 'lib' << 'spec'
+  spec.spec_files = FileList['spec/**/*_spec.rb']
+end
+
+Spec::Rake::SpecTask.new(:rcov) do |spec|
+  spec.libs << 'lib' << 'spec'
+  spec.pattern = 'spec/**/*_spec.rb'
+  spec.rcov = true
+end
+
+task :spec => :check_dependencies
+
+task :default => :spec
+
+require 'rake/rdoctask'
+Rake::RDocTask.new do |rdoc|
+  if File.exist?('VERSION')
+    version = File.read('VERSION')
+  else
+    version = ""
+  end
+
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title = "dget #{version}"
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
