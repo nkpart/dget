@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dget}
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nick Partridge"]
@@ -19,6 +19,8 @@ Gem::Specification.new do |s|
      "README.rdoc"
   ]
   s.files = [
+    ".document",
+     ".gitignore",
      "LICENSE",
      "README.rdoc",
      "Rakefile",
@@ -31,6 +33,7 @@ Gem::Specification.new do |s|
      "lib/dget/googlecode.rb",
      "lib/dget/utils.rb",
      "lib/googlecode.html",
+     "lib/peach.rb",
      "spec/dget_spec.rb",
      "spec/spec_helper.rb",
      "test/test_gh-wiki.rb",
