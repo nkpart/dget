@@ -40,8 +40,9 @@ module DGet
     def clean_links doc
       # rewrites internal links to use the local navigation
       doc.css('a').each do |some_a|
-        some_a['href'][/#{@project_name}\/(.*)/, 1].fmap { |id|
-          some_a['href'] = "javascript:go(\'#{id}\')"
+        some_a['href'].fmap { |href| href[/#{@project_name}\/(.*)/, 1].fmap { |id|
+            some_a['href'] = "javascript:go(\'#{id}\')"
+          }
         }
       end
     end
