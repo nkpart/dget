@@ -20,10 +20,10 @@ module DGet
     
     engine, project_spec, file = *args
     if (engine && project_spec)
-      return [engine, project_spec, file]
+      [engine, project_spec, file]
+    else 
+      []
     end
-
-    return []
   end
   
   def self.cli(stdin, stdout, args)
@@ -36,10 +36,12 @@ module DGet
       when "googlecode"
         GC.do(project_spec, file)
       end
-    else 
-      stdout.puts "Usage: "
-      stdout.puts "  dget [github|googlecode] [user/project|project] [file]"
-      stdout.puts "  dget http://github.com/user/project [file]"
+    else
+      stdout.puts <<USAGE 
+ Usage: 
+   dget [github|googlecode] [user/project|project] [file]
+   dget http://github.com/user/project [file]
+USAGE
     end
   end
 end

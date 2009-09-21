@@ -9,7 +9,6 @@ describe "Dget" do
       [["http://wiki.github.com/jgarber/redcloth", "test.html"], ["github", "jgarber/redcloth", "test.html"]]
     ].each do |args, out|
       DGet.parse_args(args).should == out
-    end    
-
+    end
   end
 end
