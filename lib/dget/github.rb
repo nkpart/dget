@@ -83,7 +83,7 @@ module DGet
       i = 0 #todo better way to trace this?
       page_content = pages.map { |title, id, content_f|
         i += 1
-        puts "  * [#{i}/#{pages.count}] #{title}"
+        puts "  * [#{i}/#{pages.size}] #{title}"
         "<div id=\"#{id}\">#{content_f[]}</div>"
       }.join
 
