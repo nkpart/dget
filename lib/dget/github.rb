@@ -1,6 +1,7 @@
 $:.unshift(File.dirname(__FILE__)) unless
   $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
   
+  
 require 'dget'
 module DGet
   
@@ -82,9 +83,10 @@ module DGet
       main_content = root.css('.main').first.fmap(&:inner_html)
       page_list = sidebar(pages)
       i = 0 #todo better way to trace this?
-      page_content = pages.map { |title, id, content_f|
-        i += 1
-        puts "  * [#{i}/#{pages.size}] #{title}"
+      puts "Getting #{pages.size} pages."
+      page_content = pages.pmap(5) { |title, id, content_f|
+        # i += 1
+        # puts "  * [#{i}/#{pages.size}] #{title}"
         "<div id=\"#{id}\">#{content_f[]}</div>"
       }.join
 

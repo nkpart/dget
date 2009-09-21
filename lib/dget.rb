@@ -3,6 +3,7 @@ $:.unshift(File.dirname(__FILE__)) unless
 
 %w{rubygems erb nokogiri open-uri}.each { |r| require r }
 
+require 'peach'
 require "dget/utils"
 require "dget/googlecode"
 require "dget/github"
